@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jérémy Thomas — Portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio de Jérémy Thomas, étudiant en BTS SIO option SISR — Épreuve E5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary:     #3b6bcf;
+      --primary-dark:#2a54a8;
+      --primary-light:#e8f0fe;
+      --bg:          #ffffff;
+      --bg2:         #f8f9fc;
+      --bg3:         #eef1f8;
+      --border:      #dde3f0;
+      --text:        #1a2035;
+      --text-muted:  #5a6480;
+      --white:       #ffffff;
+      --radius:      12px;
+      --shadow:      0 4px 20px rgba(59,107,207,0.10);
+      --font-display:'Syne', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:1rem; line-height:1.7; overflow-x:hidden; }
+
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--bg2); }
+    ::-webkit-scrollbar-thumb { background:var(--primary); border-radius:3px; }
+
+    h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.2; }
+    a { color:var(--primary); text-decoration:none; transition:color .2s; }
+    a:hover { color:var(--primary-dark); }
+
+    .container { max-width:1000px; margin:0 auto; padding:0 2rem; }
+    section { padding:5rem 0; }
+
+    /* ── HEADER ── */
+    header {
+      position:relative;
+      background: linear-gradient(135deg, #3b6bcf 0%, #5b8dee 100%);
+      border-bottom:1px solid var(--border);
+      padding:5rem 0 4rem; text-align:center; overflow:hidden;
+    }
+    header::before {
+      content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%);
+      width:600px; height:600px;
+      background:radial-gradient(circle,rgba(255,255,255,0.12) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .header-grid { display:flex; flex-direction:column; align-items:center; gap:1.2rem; position:relative; z-index:1; }
+    .avatar-wrap { position:relative; display:inline-block; }
+    .avatar-wrap img {
+      width:110px; height:110px; border-radius:50%; object-fit:cover;
+      border:3px solid rgba(255,255,255,0.8); display:block;
+    }
+    .avatar-ring {
+      position:absolute; inset:-6px; border-radius:50%;
+      border:2px dashed rgba(255,255,255,0.4);
+      animation:spin 18s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    header h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; letter-spacing:-0.02em; color:#ffffff; }
+    header .subtitle { font-size:1.05rem; color:rgba(255,255,255,0.8); letter-spacing:0.06em; text-transform:uppercase; font-weight:300; }
+    .header-badges { display:flex; justify-content:center; margin-top:.4rem; }
+    .badge-group {
+      display:inline-flex; align-items:center;
+      background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3);
+      border-radius:99px; overflow:hidden;
+    }
+    .badge {
+      color:#ffffff; padding:.35rem 1rem; font-size:.82rem; font-weight:500; letter-spacing:.04em;
+      position:relative;
+    }
+    .badge:not(:last-child)::after {
+      content:''; position:absolute; right:0; top:20%; height:60%;
+      width:1px; background:rgba(255,255,255,0.3);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position:sticky; top:0; z-index:100;
+      background:rgba(255,255,255,0.95); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(59,107,207,0.07);
+    }
+    .nav-inner { max-width:1000px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+    .nav-logo { font-family:var(--font-display); font-weight:700; font-size:.95rem; color:var(--text); letter-spacing:.02em; }
+    .nav-links { display:flex; gap:.2rem; list-style:none; }
+    .nav-links a { color:var(--text-muted); font-size:.88rem; font-weight:500; padding:.4rem .85rem; border-radius:6px; transition:all .2s; letter-spacing:.02em; }
+    .nav-links a:hover, .nav-links a.active { color:var(--primary); background:var(--primary-light); }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:.12em;
+      color:var(--primary); margin-bottom:.8rem;
+    }
+    .section-label::before { content:''; display:block; width:20px; height:2px; background:var(--primary); border-radius:2px; }
+    h2.section-title { font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--text); margin-bottom:2.5rem; letter-spacing:-.02em; }
+
+    /* ── ABOUT ── */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    #about p { color:var(--text-muted); font-size:1.05rem; line-height:1.8; }
+    .info-list { list-style:none; display:flex; flex-direction:column; gap:.8rem; }
+    .info-list li { display:flex; gap:.8rem; align-items:flex-start; font-size:.95rem; }
+    .info-list .label { color:var(--text-muted); font-size:.82rem; font-weight:500; text-transform:uppercase; letter-spacing:.06em; min-width:110px; padding-top:.15rem; }
+    .info-list .value { color:var(--text); font-weight:400; }
+
+    /* ── FORMATION ── */
+    .formation-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:2rem; display:grid; grid-template-columns:auto 1fr; gap:0 1.5rem; align-items:start; }
+    .formation-year { font-family:var(--font-display); font-size:.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:.08em; white-space:nowrap; margin-top:.15rem; padding:.35rem 0; }
+    .formation-card h3 { font-size:1.1rem; font-weight:700; color:var(--text); margin-bottom:.3rem; }
+    .formation-card .school { font-size:.9rem; color:var(--primary); margin-bottom:.6rem; font-weight:500; }
+    .formation-card p { font-size:.92rem; color:var(--text-muted); }
+
+    /* ── COMPETENCES ── */
+    .comp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .comp-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+    .comp-card:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow); }
+    .comp-code { font-family:var(--font-display); font-size:1.6rem; font-weight:800; color:var(--primary); opacity:.5; line-height:1; margin-bottom:.5rem; }
+    .comp-card h4 { font-size:.92rem; color:var(--text); font-weight:600; margin-bottom:.4rem; }
+    .comp-card p { font-size:.82rem; color:var(--text-muted); }
+
+    /* ── STAGES ── */
+    .stage-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.8rem; display:flex; flex-direction:column; gap:.6rem; margin-bottom:1.2rem; transition:border-color .25s, box-shadow .25s; }
+    .stage-card:hover { border-color:var(--primary); box-shadow:var(--shadow); }
+    .stage-card h3 { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:.1rem; }
+    .stage-card .org { font-size:.9rem; color:var(--primary); font-weight:500; }
+    .stage-card p { font-size:.9rem; color:var(--text-muted); }
+
+    /* ── PROJETS ── */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+    .project-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color .25s, transform .25s, box-shadow .25s; }
+    .project-card:hover { border-color:var(--primary); transform:translateY(-4px); box-shadow:var(--shadow); }
+    .project-thumb-placeholder { width:100%; height:150px; background:var(--bg3); display:flex; align-items:center; justify-content:center; font-size:2.5rem; }
+    .project-body { padding:1.2rem; }
+    .project-body h3 { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:.35rem; }
+    .project-body p { font-size:.88rem; color:var(--text-muted); margin-bottom:.8rem; }
+    .tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag { background:var(--primary-light); border:1px solid #c5d8fb; color:var(--primary); padding:.2rem .65rem; border-radius:99px; font-size:.75rem; font-weight:500; }
+    .tags-group-box { margin-top:1.2rem; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem 1.4rem; display:flex; flex-wrap:wrap; align-items:center; gap:.8rem; }
+    .tags-group-label { font-family:var(--font-display); font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); white-space:nowrap; }
+
+    /* ── SYNTHESE ── */
+    .synth-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:2.5rem; text-align:center; max-width:600px; }
+    .synth-icon { font-size:3rem; margin-bottom:1rem; }
+    .synth-box h3 { font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:.6rem; }
+    .synth-box p { color:var(--text-muted); font-size:.95rem; margin-bottom:1.5rem; }
+
+    /* ── BTNS ── */
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.65rem 1.4rem; border-radius:8px; font-family:var(--font-body); font-size:.9rem; font-weight:500; cursor:pointer; border:none; transition:all .2s; text-decoration:none; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-primary:hover { background:var(--primary-dark); color:#fff; transform:translateY(-1px); box-shadow:0 4px 12px rgba(59,107,207,0.25); }
+    .btn-outline { background:transparent; color:var(--primary); border:1px solid var(--border); }
+    .btn-outline:hover { border-color:var(--primary); background:var(--primary-light); color:var(--primary-dark); }
+    .btn-row { display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.2rem; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; }
+    .contact-link { display:flex; align-items:center; gap:1rem; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.2rem; text-decoration:none; color:var(--text); transition:border-color .25s, transform .25s, box-shadow .25s; }
+    .contact-link:hover { border-color:var(--primary); color:var(--primary-dark); transform:translateX(4px); box-shadow:var(--shadow); }
+    .contact-link .icon { font-size:1.4rem; width:36px; text-align:center; }
+    .contact-link .link-label { font-size:.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; }
+    .contact-link .link-val { font-size:.95rem; color:var(--text); }
+
+    /* ── CARD ── */
+    .card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+    .card:hover { border-color:var(--primary); transform:translateY(-3px); box-shadow:var(--shadow); }
+    .card-icon { font-size:1.5rem; margin-bottom:.8rem; }
+    .card h3 { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:.4rem; }
+    .card .meta { font-size:.9rem; color:var(--text-muted); line-height:1.65; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--text); border-top:1px solid var(--border); text-align:center; padding:2rem; color:rgba(255,255,255,0.6); font-size:.85rem; }
+    footer strong { color:#5b8dee; }
+
+    .section-divider { height:1px; background:var(--border); max-width:1000px; margin:0 auto; }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; }
+    .fade-in.visible { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:768px) {
+      section { padding:3rem 0; }
+      .container { padding:0 1.2rem; }
+      .about-grid, .contact-grid { grid-template-columns:1fr; gap:2rem; }
+      .nav-links { display:none; }
+      .formation-card, .stage-card { grid-template-columns:1fr; gap:.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="container header-grid">
+    <div class="avatar-wrap">
+      <img src="./img/photo_profil.png"
+           alt="Photo de profil de Jérémy Thomas"
+           onerror="this.src='https://ui-avatars.com/api/?name=J%C3%A9r%C3%A9my+Thomas&background=5b8dee&color=fff&size=220'" />
+      <div class="avatar-ring"></div>
+    </div>
+    <h1>Jérémy Thomas</h1>
+    <p class="subtitle">Technicien Informatique</p>
+    <div class="header-badges">
+      <div class="badge-group">
+        <span class="badge">BTS SIO</span>
+        <span class="badge">SISR</span>
+        <span class="badge">Promotion 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Jérémy Thomas</span>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#stages">Stages</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#synthese">Épreuve E5</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════ À PROPOS ══════════ -->
+<section id="about">
+  <div class="container">
+    <p class="section-label fade-in">Qui suis-je ?</p>
+    <h2 class="section-title fade-in">À propos</h2>
+    <div class="about-grid fade-in">
+      <div>
+        <p>Je suis THOMAS Jérémy, jeune étudiant en BTS SIO option SISR. Je sors d'un Bac Général avec les spécialités Mathématiques et Physique-Chimie. En dehors de mes études, je pratique le basket qui est ma passion.</p>
+        <div class="btn-row">
+          <a href="./img/CV.pdf" class="btn btn-primary" download>⬇ Télécharger mon CV</a>
+          <a href="#contact" class="btn btn-outline">✉ Me contacter</a>
+        </div>
+      </div>
+      <ul class="info-list">
+        <li><span class="label">Localisation</span><span class="value">France</span></li>
+        <li><span class="label">Formation</span><span class="value">BTS SIO SISR</span></li>
+        <li><span class="label">Passion</span><span class="value">Basket-ball 🏀</span></li>
+        <li><span class="label">Disponibilité</span><span class="value">Stage / Alternance</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ FORMATION ══════════ -->
+<section id="formation">
+  <div class="container">
+    <p class="section-label fade-in">Parcours scolaire</p>
+    <h2 class="section-title fade-in">Formation</h2>
+
+    <div class="formation-card fade-in" style="margin-bottom:1.2rem;">
+      <span class="formation-year">2024 – 2026</span>
+      <div>
+        <h3>BTS SIO — Solutions d'Infrastructure, Systèmes et Réseaux (SISR)</h3>
+        <p class="school">Lycée / CFA — France</p>
+        <p>Formation en deux ans préparant à concevoir, déployer et sécuriser des infrastructures informatiques et réseaux. Acquisition de compétences en administration systèmes Linux/Windows, réseaux TCP/IP, cybersécurité, virtualisation et support aux utilisateurs.</p>
+      </div>
+    </div>
+
+    <div class="formation-card fade-in">
+      <span class="formation-year">2021 – 2024</span>
+      <div>
+        <h3>Baccalauréat Général</h3>
+        <p class="school">Lycée</p>
+        <p>Spécialités : Mathématiques &amp; Physique-Chimie. Acquisition de la rigueur analytique et du raisonnement scientifique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ COMPÉTENCES SISR ══════════ -->
+<section id="competences">
+  <div class="container">
+    <p class="section-label fade-in">Référentiel BTS SIO SISR</p>
+    <h2 class="section-title fade-in">Compétences</h2>
+    <div class="comp-grid">
+      <div class="comp-card fade-in">
+        <div class="comp-code">C1</div>
+        <h4>Support &amp; Assistance</h4>
+        <p>Gérer le patrimoine informatique et répondre aux incidents utilisateurs.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <div class="comp-code">C2</div>
+        <h4>Infra &amp; Réseaux</h4>
+        <p>Concevoir et déployer une infrastructure réseau sécurisée.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <div class="comp-code">C3</div>
+        <h4>Cybersécurité</h4>
+        <p>Protéger les systèmes d'information et mettre en œuvre une politique de sécurité.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <div class="comp-code">C4</div>
+        <h4>Virtualisation</h4>
+        <p>Mettre en place et administrer des environnements virtualisés.</p>
+      </div>
+      <div class="comp-card fade-in">
+        <div class="comp-code">C6</div>
+        <h4>Documentation</h4>
+        <p>Rédiger des procédures techniques et maintenir la documentation SI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ STAGES ══════════ -->
+<section id="stages">
+  <div class="container">
+    <p class="section-label fade-in">Expériences professionnelles</p>
+    <h2 class="section-title fade-in">Stages</h2>
+
+    <div class="stage-card fade-in">
+      <h3>Stage de 1ère année</h3>
+      <p class="org">🏢 Communauté de Communes &nbsp;·&nbsp; Année scolaire 2024-2025</p>
+      <p>Stage effectué au sein du service informatique d'une communauté de communes. Découverte de l'environnement professionnel, assistance aux utilisateurs et participation aux tâches d'administration du parc informatique.</p>
+      <div class="tags">
+        <span class="tag">C1 — Support</span>
+        <span class="tag">Administration poste</span>
+        <span class="tag">Inventaire parc</span>
+      </div>
+    </div>
+
+    <!-- Stage 2ème année : décommentez quand vous l'avez effectué
+    <div class="stage-card fade-in">
+      <div class="stage-num">S2</div>
+      <div>
+        <h3>Stage de 2ème année</h3>
+        <p class="org">🏢 Nom de l'entreprise · Année scolaire 2025-2026</p>
+        <p>Description du stage...</p>
+        <div class="tags" style="margin-top:.8rem;">
+          <span class="tag">C2</span>
+          <span class="tag">C3</span>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ PROJETS ══════════ -->
+<section id="projets">
+  <div class="container">
+    <p class="section-label fade-in">Réalisations</p>
+    <h2 class="section-title fade-in">Projets scolaires</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-thumb-placeholder">🖥️</div>
+        <div class="project-body">
+          <h3>Projet 1</h3>
+          <p>Description du projet — à compléter avec votre réalisation.</p>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-thumb-placeholder">🔒</div>
+        <div class="project-body">
+          <h3>Projet 2</h3>
+          <p>Description du projet — à compléter avec votre réalisation.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Cadre commun des compétences / tags -->
+    <div class="tags-group-box fade-in">
+      <span class="tags-group-label">Compétences mobilisées</span>
+      <div class="tags">
+        <span class="tag">Réseau</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Administration</span>
+        <span class="tag">Sécurité</span>
+        <span class="tag">Firewall</span>
+        <span class="tag">SISR</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ TABLEAU DE SYNTHÈSE ══════════ -->
+<section id="synthese">
+  <div class="container">
+    <p class="section-label fade-in">BTS SIO — Épreuve E5</p>
+    <h2 class="section-title fade-in">Tableau de Synthèse</h2>
+    <div class="synth-box fade-in">
+      <div class="synth-icon">📋</div>
+      <h3>Tableau de Synthèse des réalisations professionnelles</h3>
+      <p>Ce document recense l'ensemble des situations professionnelles vécues en stage, associées aux compétences du référentiel BTS SIO SISR, conformément aux exigences de l'épreuve E5.</p>
+    <a href="./{css,includes,img,js}/tableau de synthese - epreuve e5 - bts sio.pdf" class="btn btn-primary" download>
+        ⬇ Télécharger le tableau de synthèse (.pdf)
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label fade-in">Me joindre</p>
+    <h2 class="section-title fade-in">Contact</h2>
+    <div class="contact-grid fade-in">
+      <div>
+        <p style="color:var(--text-muted); margin-bottom:1.5rem; font-size:.95rem;">Vous pouvez me contacter par email ou via LinkedIn pour toute question, proposition de stage ou d'alternance.</p>
+        <div class="contact-links">
+          <a href="mailto:thomasjeremy1220@gmail.com" class="contact-link">
+            <span class="icon">✉</span>
+            <div>
+              <div class="link-label">Email</div>
+              <div class="link-val">thomasjeremy1220@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/jérémy-thomas-752508382" class="contact-link" target="_blank" rel="noopener">
+            <span class="icon">🔗</span>
+            <div>
+              <div class="link-label">LinkedIn</div>
+              <div class="link-val">Voir mon profil</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/jeremythomas9846/?next=%2F" class="contact-link" target="_blank" rel="noopener">
+            <span class="icon">📷</span>
+            <div>
+              <div class="link-label">Instagram</div>
+              <div class="link-val">Voir mon profil</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div class="card" style="background:var(--bg3);">
+          <div class="card-icon">🎓</div>
+          <h3>Épreuve E5</h3>
+          <p class="meta">BTS SIO SISR · Promotion 2026</p>
+        </div>
+        <div class="card" style="background:var(--bg3);">
+          <div class="card-icon">📍</div>
+          <h3>Disponibilité</h3>
+          <p class="meta">Ouvert aux stages et opportunités en alternance dans le domaine des réseaux et systèmes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 — <strong>Jérémy Thomas</strong> · Portfolio BTS SIO SISR · Épreuve E5</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Active nav
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-links a');
+  function updateNav() {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>
+
+</body>
+</html>
