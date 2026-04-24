@@ -198,8 +198,9 @@
     .veille-card p { font-size:.85rem; color:var(--text-muted); line-height:1.65; }
     .veille-sources { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem 1.8rem; }
     .veille-sources h4 { font-size:.88rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--primary); margin-bottom:.9rem; }
-    .veille-source-group { display:inline-flex; flex-wrap:wrap; align-items:center; background:var(--primary-light); border:1px solid #c5d8fb; border-radius:99px; overflow:hidden; }
-    .veille-source-item { color:var(--primary); padding:.35rem 1rem; font-size:.82rem; font-weight:500; letter-spacing:.02em; position:relative; white-space:nowrap; }
+    .veille-source-group { display:inline-flex; flex-wrap:wrap; align-items:center; background:var(--primary-light); border:1px solid #c5d8fb; border-radius:var(--radius); overflow:hidden; }
+    .veille-source-item { color:var(--primary); padding:.35rem 1rem; font-size:.82rem; font-weight:500; letter-spacing:.02em; position:relative; white-space:nowrap; transition:background .2s; }
+    .veille-source-item:hover { background:rgba(59,107,207,0.12); }
     .veille-source-item:not(:last-child)::after { content:''; position:absolute; right:0; top:20%; height:60%; width:1px; background:#c5d8fb; }
 
     /* ── FOOTER ── */
@@ -464,7 +465,7 @@
       <div class="veille-card fade-in">
         <div class="veille-card-icon">📡</div>
         <h4>Réseaux sociaux & forums</h4>
-        <p>Suivi de comptes spécialisés sur LinkedIn et Reddit (r/sysadmin, r/networking) pour accéder à des retours d'expérience et des actualités du terrain en temps réel.</p>
+        <p>Suivi de comptes tech sur TikTok et Instagram — <em>Nowtech</em>, <em>Micode</em> et <em>Le Frère Codeur</em> — pour une veille rapide et accessible sur l'actualité informatique au quotidien.</p>
       </div>
       <div class="veille-card fade-in">
         <div class="veille-card-icon">📰</div>
@@ -474,7 +475,7 @@
       <div class="veille-card fade-in">
         <div class="veille-card-icon">🎥</div>
         <h4>Vidéos & chaînes YouTube</h4>
-        <p>Visionnage de tutoriels et conférences sur YouTube : <em>Nowtech</em> pour l'actu tech, <em>Grafikart</em> pour le développement et les outils, <em>Micode</em> pour la culture informatique grand public.</p>
+        <p>Visionnage de tutoriels et vidéos tech sur YouTube : <em>Nowtech</em> pour l'actu tech, <em>Grafikart</em> pour le développement, <em>Micode</em> pour la cybersécurité et <em>Le Frère Codeur</em> pour la culture informatique.</p>
       </div>
     </div>
 
@@ -482,11 +483,19 @@
     <div class="veille-sources fade-in">
       <h4>Sources & outils suivis régulièrement</h4>
       <div class="veille-source-group">
-        <span class="veille-source-item">🏭 L'Usine Digitale</span>
-        <span class="veille-source-item">📰 Le Journal du Hacker</span>
-        <span class="veille-source-item">🎥 Nowtech</span>
-        <span class="veille-source-item">🎥 Grafikart</span>
-        <span class="veille-source-item">🎥 Micode</span>
+        <a href="https://www.usine-digitale.fr/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🏭 L'Usine Digitale</a>
+        <a href="https://www.journalduhacker.net/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">📰 Le Journal du Hacker</a>
+        <a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">📰 Le Monde Informatique</a>
+        <a href="https://www.youtube.com/@Nowtech" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎥 Nowtech</a>
+        <a href="https://www.youtube.com/@grafikart" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎥 Grafikart</a>
+        <a href="https://www.youtube.com/@Micode" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎥 Micode</a>
+        <a href="https://www.youtube.com/@lefrerecodeur" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎥 Le Frère Codeur</a>
+        <a href="https://www.tiktok.com/@nowtechteam" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎵 TikTok @nowtechteam</a>
+        <a href="https://www.tiktok.com/@micode" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎵 TikTok @micode</a>
+        <a href="https://www.tiktok.com/@lefrerecodeur" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">🎵 TikTok @lefrerecodeur</a>
+        <a href="https://www.instagram.com/nowtechteam/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">📸 Instagram @nowtechteam</a>
+        <a href="https://www.instagram.com/micode/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">📸 Instagram @micode</a>
+        <a href="https://www.instagram.com/lefrerecodeur/" target="_blank" rel="noopener" class="veille-source-item" style="text-decoration:none;">📸 Instagram @lefrerecodeur</a>
       </div>
     </div>
 
